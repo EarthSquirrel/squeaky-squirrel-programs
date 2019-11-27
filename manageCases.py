@@ -6,6 +6,13 @@ each directory
 """
 import os
 import sys
+from datetime import datetime as dt
+
+# TODO: This doesn't work correctly the first time on the .thunderbird/../Imap
+# files. Need to fix this before running it on next hard drive!
+
+start_time = dt.now()
+print('Started running: ', start_time)
 
 if len(sys.argv) <= 1:
     print('Must enter path to scan')
@@ -49,3 +56,6 @@ for root, dirs, files in os.walk(path):
 			print('*****', loc)
 			print('**Renamed**', os.path.join(root, d))
 			print('\n')
+
+end_time = dt.now()
+print('Total runtime: ', str(end_time-start_time))
