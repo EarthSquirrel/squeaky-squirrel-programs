@@ -14,3 +14,11 @@ for root, dirs, files in os.walk(path):
 		if f.lower() in cp:
 			print('***', os.path.join(root, f)) 
 			print('\n')	
+
+	lower =  [d.lower() for d in dirs]
+	for d in dirs:
+		cp = lower.copy()
+		cp.remove(d.lower())
+		if d.lower() in cp:
+			print('*****', os.path.join(root, d))
+			print('\n')
