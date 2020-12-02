@@ -1,14 +1,23 @@
 import numpy as np
 import sys
 
+help_text = 'This is designed to encourages movement. It will give a set of \
+exercises to do. The options are as follows: \n snack (iterations) \n\t Gives \
+a short set of exercises to do. The number of iterations is optional. If not \
+set it will be set to five. \n routine (iterations) \n\t Gives the whole list \
+of exercises with a default of 10 iterations.'
+
 args = sys.argv
 
 if len(args) <= 1:
+    print(help_text)
     print('Need argunments to proccede')
     sys.exit()
 
-
-if args[1] == 'snack':
+if args[1] == 'help':
+    print(help_text)
+    sys.exit()
+elif args[1] == 'snack':
     if len(args) == 3:
         iters = int(args[2])
     else:
