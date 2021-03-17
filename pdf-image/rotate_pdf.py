@@ -36,14 +36,17 @@ def PDFrotate(origFileName, newFileName, rotation):
 
 if __name__ == '__main__':
 
-    # original pdf file name
-    origFileName = 'example.pdf'
+    books =  ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11',
+             '12', '13 Ohio Sept 95']
+    for i in books:
+        # original pdf file name
+        origFileName = "/Users/britney/Documents/photo scans/barb's flipbook {}.pdf".format(i)
 
-    # new pdf file name
-    newFileName = 'rotated_example.pdf'
+        # new pdf file name
+        newFileName = "/Users/britney/Documents/photo scans/rotated barb's flipbook {}.pdf".format(i)
 
-    # rotation angle
-    rotation = 270
+        # rotation angle
+        rotation = 270
 
-    # calling the PDFrotate function
-    PDFrotate(origFileName, newFileName, rotation)
+        # calling the PDFrotate function
+        PDFrotate(origFileName, newFileName, rotation)
