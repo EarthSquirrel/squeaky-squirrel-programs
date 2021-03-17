@@ -1,21 +1,21 @@
-# import module
+#  https://www.geeksforgeeks.org/convert-pdf-to-image-using-python/
 from pdf2image import convert_from_path
 
-path = '/Users/britney/Documents/photo scans/texas 2009/001-087 after that messed up.pdf'
+path = '/Users/britney/Documents/photo scans/texas 2009/_02.pdf'
 save_path = '/Users/britney/Documents/photo scans/texas 2009/'
 
 # starting number of image
-start = 1
+start = 44
 
 # Store Pdf with convert_from_path function
 images = convert_from_path(path)
 
-for i in range(1, len(images), 2):
+for i in range(0, len(images), 2):
     num = str(start)
     if len(num) == 1:
-        num = '00' + num
-    else len(num) == 2:
-        num = '0' + num
+        num = '{}{}'.format('00', num)
+    elif len(num) == 2:
+        num = '{}{}'.format('0', num)
     # assume only goes to three digits
 
     # increment start
