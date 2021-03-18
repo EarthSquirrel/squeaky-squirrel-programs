@@ -19,6 +19,8 @@ dependencies:
   - xz=5.2.5=h1de35cc_0
   - zlib=1.2.11=h1de35cc_3
   - pip:
+    - numpy==1.20.1
+    - opencv-python==4.5.1.48
     - pdf2image==1.14.0
     - pillow==8.1.2
     - pypdf2==1.26.0
