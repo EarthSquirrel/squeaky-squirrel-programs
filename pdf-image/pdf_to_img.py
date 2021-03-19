@@ -1,8 +1,6 @@
 #  https://www.geeksforgeeks.org/convert-pdf-to-image-using-python/
 from pdf2image import convert_from_path
-import cv2
 import numpy as np
-from PIL import Image
 import sys
 
 # read in parameters from terminal
