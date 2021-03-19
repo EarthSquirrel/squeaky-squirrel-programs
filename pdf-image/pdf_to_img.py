@@ -15,13 +15,6 @@ digit = int(sys.argv[2])
 path = sys.argv[3]
 save_path = sys.argv[4]
 
-
-#path = '/Users/britney/Documents/photo scans/texas 2009/_02.pdf'
-#save_path = '/Users/britney/Documents/photo scans/texas 2009/'
-
-# starting number of image
-#start = 44
-
 # Store Pdf with convert_from_path function
 images = convert_from_path(path)
 print('Converting a {} page PDF to images'.format(len(images)))
