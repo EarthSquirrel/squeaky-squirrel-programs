@@ -14,6 +14,26 @@ start = int(sys.argv[1])
 digit = int(sys.argv[2])
 path = sys.argv[3]
 save_path = sys.argv[4]
+white_thresh = 725
+
+
+def two_name(num):
+    # get the number of an image
+    if len(num) == 1:
+        num = '{}{}'.format('0', num)
+    elif len(num) == 2:
+        num = '{}{}'.format('', num)
+    # assume only goes to three digits
+    return num
+
+def three_name(num):
+    # get the number of an image
+    if len(num) == 1:
+        num = '{}{}'.format('00', num)
+    elif len(num) == 2:
+        num = '{}{}'.format('0', num)
+    # assume only goes to three digits
+    return num
 
 # Store Pdf with convert_from_path function
 images = convert_from_path(path)
@@ -30,18 +50,32 @@ for i in range(0, len(images), 1):
             avg += np.sum(img.getpixel((w, h)))
     
     avg = avg/(width*height)
-    print(avg)
     
-
-    if len(num) == 1:
-        num = '{}{}'.format('0', num)
-    elif len(num) == 2:
-        num = '{}{}'.format('', num)
-    # assume only goes to three digits
-
-    # increment start
-    start += 1
     
+    # get the number for the image
+    if avg < white_thresh:
+        num = start
+        # increment start
+        start += 1
+    else:
+        num = start - 1
+    
+    # convert num to string
+    num = str(num)
+    # get the name with number of digits
+    if digit == 1:
+        pass
+    elif digit == 2:
+        num = two_name(num)
+    elif digit == 3:
+        num = three_name(num)
+    else:
+        print('Digit value must be either 1, 2, or 3')
+        sys.exit()
+    
+    # add the back if necessary
+    if avg >= 725:
+        num = 'back-' + num
 
     # Save pages as images in the pdf
     images[i].save(save_path + num + '.jpg', 'JPEG')
