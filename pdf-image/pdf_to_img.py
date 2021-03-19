@@ -1,5 +1,8 @@
 #  https://www.geeksforgeeks.org/convert-pdf-to-image-using-python/
 from pdf2image import convert_from_path
+import cv2
+import numpy as np
+from PIL import Image
 import sys
 
 # read in parameters from terminal
@@ -27,6 +30,18 @@ print('Converting a {} page PDF to images'.format(len(images)))
 
 for i in range(0, len(images), 1):
     num = str(start)
+    
+    img = images[i]
+    width, height = img.size
+    avg = 0
+    for w in range(width):
+        for h in range(height):
+            avg += np.sum(img.getpixel((w, h)))
+    
+    avg = avg/(width*height)
+    print(avg)
+    
+
     if len(num) == 1:
         num = '{}{}'.format('0', num)
     elif len(num) == 2:
@@ -35,6 +50,7 @@ for i in range(0, len(images), 1):
 
     # increment start
     start += 1
+    
 
     # Save pages as images in the pdf
     images[i].save(save_path + num + '.jpg', 'JPEG')
