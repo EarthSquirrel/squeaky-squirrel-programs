@@ -76,7 +76,7 @@ def convert(start, digit, path, save_path, white_thresh=725, detect_white=True):
 
         # Save pages as images in the pdf
         images[i].save(save_path + num + '.jpg', 'JPEG')
-
+    return start
 
 if __name__ == '__main__':
     # read in parameters from terminal
