@@ -24,7 +24,7 @@ def three_name(num):
     return num
 
 
-def convert(start, digit, path, save_path, white_thresh, detect_white=True):
+def convert(start, digit, path, save_path, white_thresh=725, detect_white=True):
     # Store Pdf with convert_from_path function
     images = convert_from_path(path, 600)
     print('Converting a {} page PDF to images'.format(len(images)))
