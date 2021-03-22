@@ -25,6 +25,10 @@ def three_name(num):
 
 
 def convert(start, digit, path, save_path, white_thresh=725, detect_white=True):
+    # make sure save_path ends with /
+    if not save_path.endswith('/'):
+        save_path = save_path + '/'
+    
     # Store Pdf with convert_from_path function
     images = convert_from_path(path, 600)
     print('Converting a {} page PDF to images'.format(len(images)))
