@@ -36,14 +36,17 @@ def resize4x6(path):
             width, height = img.size
         # do 4 first then go for 6
         # testing 4in (386 px)
-        x = int(width*386/height)
-        if x <= 576:
-            new_dims = [x, 386]
+        # 600 dpi
+        in4 = 2400 #386
+        in6 = 3600 #576
+        x = int(width*in4/height)
+        if x <= in6:
+            new_dims = [x, in4]
 
         # testing 6in (576 px)
-        x = int(height*576/width)
-        if x <= 386:
-            new_dims = [576, x]
+        x = int(height*in6/width)
+        if x <= in4:
+            new_dims = [in6, x]
 
         # resize the image
         img = img.resize(new_dims)
@@ -51,14 +54,14 @@ def resize4x6(path):
 
         # fill in rest with white space
         # make a white image
-        white = Image.new('RGB', (576, 386), (255, 255, 255))
+        white = Image.new('RGB', (in6, in4), (255, 255, 255))
 
         # fill in pixels of image that fit
         white.paste(img, (0,0))
         #white.show()
         # tada!
         new_img_name = '4x6_' + img_name
-        white.save(os.path.join(path, new_img_name))
+        white.save(os.path.join(path, new_img_name), dpi=(600,600), quality=95)
         new_img_path = os.path.join(path, folder_name, img_name)
         os.rename(img_path, new_img_path)
 
